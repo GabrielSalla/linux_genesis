@@ -1,0 +1,16 @@
+[user]
+	name = Gabriel Salla
+	email = gabriel.salla@pagar.me
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
+[push]
+	default = current
+[pull]
+	default = current
+[credential]
+	helper = cache --timeout=7200
+[alias]
+    blog = log --graph --all --decorate --oneline
+    amend = commit --amend

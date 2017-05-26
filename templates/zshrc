@@ -1,0 +1,26 @@
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="agnoster"
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+prompt_context () { } 
+
+alias p3="python3"
+alias gopen="xdg-open"
+
+alias postman="~/Postman"
+alias pgadmin="source ~/pgadmin4/bin/activate && python ~/pgadmin4/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py" 
+alias vpn="sudo openvpn --config ~/.ovpn/config.ovpn --ca ~/.ovpn/ca.crt --cert ~/.ovpn/client.crt --key ~/.ovpn/client.key"
+
+# Database
+alias connect172="pgcli -h 172.31.19.134 -p 5432 -U ops -W -d pagarme"
+alias connectfinops="pgcli -h finops-intdb.pagarme.net -p 5432 -U ops -W -d pagarme"
+
+# Scripts
+alias devbox="~/scripts/devbox"
+alias fetch="python3 ~/scripts/fetch.py"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

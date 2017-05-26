@@ -1,0 +1,77 @@
+set nocompatible
+set clipboard=unnamed
+filetype plugin indent on
+syntax enable
+set hidden
+set history=100
+set t_Co=256
+
+"Search
+"set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+"Clear the search highlights by pressing ESC
+"nnoremap <CR> :noh<CR>
+
+set number
+set relativenumber
+set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+
+set wildmenu
+set wildmode=list:longest,full
+
+"Show key presses in normal mode
+set showcmd
+
+"Removing arrows from every mode
+no <Down> <Nop>
+no <C-Down> <Nop>
+no <Left> <Nop>
+no <Right> <Nop>
+no <Up> <Nop>
+no <C-Up> <Nop>
+
+ino <Down> <Nop>
+ino <Left> <Nop>
+ino <Right> <Nop>
+ino <Up> <Nop>
+
+vno <Down> <Nop>
+vno <Left> <Nop>
+vno <Right> <Nop>
+vno <Up> <Nop>
+
+map Y y$
+
+"Enable command repeat in view mode
+vnoremap . :normal .<cr>
+
+"Ctrl+Backspace deletes one word before like Ctrl+W
+imap  <C-W>
+
+"Using Ctrl+Arrows to move through tabs
+map <C-Right> <ESC>:tabnext<CR>
+map <C-Left> <ESC>:tabprevious<CR>
+nmap <C-Right> :tabnext<CR>
+nmap <C-Left> :tabprevious<CR>
+imap <C-Right> <ESC>:tabnext<CR>
+imap <C-Left> <ESC>:tabprevious<CR>
+
+"Ctrl+k and Ctrl+j moves lines up and down
+nmap <C-j> ddp
+nmap <C-k> ddkP
+
+"Visual modifications
+nmap G Gzz
+nmap n nzz
+nmap N Nzz
+
+"Indent with tab in visual mode
+vmap <Tab> >
+vmap <S-Tab> <

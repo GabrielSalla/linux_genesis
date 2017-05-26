@@ -1,0 +1,91 @@
+#!/bin/bash
+GENESISPATH="$(find . -maxdepth 1 -type d -name '*genesis*' -print -quit)"
+
+# Installing pagages
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install -fy git zsh vim-gnome python python-pip python3 python3-pip docker-compose openvpn spotify-client
+sudo apt-get autoremove -y
+
+# Installing Python modules
+sudo pip install -r python_requirements
+sudo pip3 install -r python3_requirements
+
+# Setup SSH-key
+ssh-keygen -t rsa -b 4096 -C "gabriel.c.salla@gmail.com" -f ~/.ssh/id_rsa
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+cat ~/.ssh/id_rsa.pub
+printf '%*s\n\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+
+# GitHub
+while true
+do
+  echo "Add key to GitHub and press a key to continue"
+  read -n 1 -s
+  echo "Testing GitHub key"
+  ssh -T git@github.com >/dev/null 2>/dev/null
+  RESULT=$?
+  if [ $RESULT -eq 1 ]; then
+    echo "Test successful"
+    break
+  else
+    echo "Test failed"
+  fi
+done
+
+# FZF
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# Oh-my-zsh
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+chsh -s /usr/bin/zsh
+git clone git@github.com:powerline/fonts.git
+mkdir ~/.fonts
+mv ~/fonts/Inconsolata-g/Inconsolata-g\ for\ Powerline.otf ~/.fonts/
+rm -rf ~/fonts
+fc-cache -vf ~/.fonts
+
+# Postman
+wget https://dl.pstmn.io/download/latest/linux64 -O ./postman.tar.gz
+sudo tar -xzf postman.tar.gz -C ~
+rm postman.tar.gz
+
+# Slack
+wget https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.2-amd64.deb -O slack.deb
+sudo dpkg -i slack.deb
+rm slack.deb
+
+# Sublime text 3
+wget https://download.sublimetext.com/sublime-text_build-3126_amd64.deb -O sublime.deb
+sudo dpkg -i sublime.deb
+rm sublime.deb
+
+# PgAdmin 4
+wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v1.5/pip/pgadmin4-1.5-py2.py3-none-any.whl -O pgadmin4-1.5-py2.py3-none-any.whl
+pip3 install pgadmin4-1.5-py2.py3-none-any.whl
+rm pgadmin4-1.5-py2.py3-none-any.whl
+
+# Cloning repositories
+mkdir ~/repositories
+git clone git@github.com:pagarme/ops.git ~/repositories/ops
+git clone git@github.com:pagarme/opsutils.git ~/repositories/opsutils
+sudo pip3 install ~/repositories/opsutils
+
+# Copying files
+cp $GENESISPATH/scripts ~/scripts -r
+cp $GENESISPATH/templates/vimrc ~/.vimrc
+cp $GENESISPATH/templates/zshrc ~/.zshrc
+cp $GENESISPATH/templates/gitconfig ~/.gitconfig
+cp $GENESISPATH/templates/gtk_css ~/.config/gtk-3.0/gtk.css
+cp $GENESISPATH/templates/gtk_settings ~/.config/gtk-3.0/settings.ini
+
+# Gnome settings
+gsettings set org.gnome.desktop.interface clock-show-date true
+gsettings set org.gnome.desktop.interface clock-show-seconds true
+gsettings set org.gnome.desktop.interface cursor-blink-time 600
+gsettings set org.gnome.desktop.peripherals.keyboard delay 200
