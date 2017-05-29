@@ -91,6 +91,9 @@ gsettings set org.gnome.desktop.interface cursor-blink-time 600
 gsettings set org.gnome.desktop.peripherals.keyboard delay 200
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.35
 
+# Gnome extensions
+gsettings set org.gnome.shell enabled-extensions "['alternate-tab@gnome-shell-extensions.gcampax.github.com']"
+
 #Default text editor to Sublime
 sudo sed -i 's/gedit/sublime_text/' /usr/share/applications/defaults.list
 cp /usr/share/applications/defaults.list ~/.local/share/applications/defaults.list
