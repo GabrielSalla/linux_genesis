@@ -11,7 +11,7 @@ prompt_context () { }
 alias p3="python3"
 alias gopen="xdg-open"
 
-alias postman="~/Postman"
+alias postman="~/Postman/Postman"
 alias pgadmin="source ~/pgadmin4/bin/activate && python ~/pgadmin4/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py" 
 alias vpn="sudo openvpn --config ~/.ovpn/config.ovpn --ca ~/.ovpn/ca.crt --cert ~/.ovpn/client.crt --key ~/.ovpn/client.key"
 
