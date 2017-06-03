@@ -1,3 +1,5 @@
 virtualenv
 psycopg2
 pytest
+pyyaml
+tabulate
