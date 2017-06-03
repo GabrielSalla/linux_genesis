@@ -1,0 +1,17 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Package Control",
+		"All Autocomplete",
+		"Pretty JSON",
+		"Python Completions",
+		"Python PEP8 Autoformat",
+		"SublimeLinter",
+		"SublimeLinter-pep8",
+		"PostgreSQL Syntax Highlighting"
+	]
+}

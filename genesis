@@ -65,6 +65,13 @@ wget https://download.sublimetext.com/sublime-text_build-3126_amd64.deb -O subli
 sudo dpkg -i sublime.deb
 rm sublime.deb
 
+SUBLIMEPATH=$GENESISPATH/sublime
+# Sublime text 3 - Packages
+wget https://packagecontrol.io/Package%20Control.sublime-package -O ~/.config/sublime-text-3/Installed\ Packages/Package\ Control.sublime-package
+cp $SUBLIMEPATH/packages ~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
+# Sublime text 3 - Settings
+cp $SUBLIMEPATH/settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+
 # PgAdmin 4
 wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v1.5/pip/pgadmin4-1.5-py2.py3-none-any.whl -O pgadmin4-1.5-py2.py3-none-any.whl
 pip3 install pgadmin4-1.5-py2.py3-none-any.whl
