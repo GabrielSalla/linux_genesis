@@ -92,14 +92,7 @@ cp $GENESISPATH/templates/gtk_css ~/.config/gtk-3.0/gtk.css
 cp $GENESISPATH/templates/gtk_settings ~/.config/gtk-3.0/settings.ini
 
 # Gnome settings
-gsettings set org.gnome.desktop.interface clock-show-date true
-gsettings set org.gnome.desktop.interface clock-show-seconds true
-gsettings set org.gnome.desktop.interface cursor-blink-time 600
-gsettings set org.gnome.desktop.peripherals.keyboard delay 200
-gsettings set org.gnome.desktop.peripherals.mouse speed -0.35
-gsettings set org.gnome.desktop.peripherals.touchpad scroll-method 'two-finger-scrolling'
-gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+cat $GENESISPATH/gnome/settings | xargs -L 1 gsettings set
 
 # Gnome extensions
 wget https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/ubuntugnome/gnomeshell-extension-manage -O ~/gnomeshell-extension-manage
