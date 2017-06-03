@@ -10,8 +10,8 @@ sudo apt-get install -fy $(grep -vE "^\s*#" $GENESISPATH/apt  | tr "\n" " ")
 sudo apt-get autoremove -y
 
 # Installing Python modules
-sudo pip install -r $GENESISPATH/python_requirements
-sudo pip3 install -r $GENESISPATH/python3_requirements
+sudo pip install -r $GENESISPATH/python/python_requirements
+sudo pip3 install -r $GENESISPATH/python/python3_requirements
 
 # Setup SSH-key
 ssh-keygen -t rsa -b 4096 -C "gabriel.c.salla@gmail.com" -f ~/.ssh/id_rsa
