@@ -102,7 +102,12 @@ gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 
 # Gnome extensions
-gsettings set org.gnome.shell enabled-extensions "['alternate-tab@gnome-shell-extensions.gcampax.github.com']"
+wget https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/ubuntugnome/gnomeshell-extension-manage -O ~/gnomeshell-extension-manage
+sudo chmod +x ~/gnomeshell-extension-manage
+~/gnomeshell-extension-manage --install --extension-id 120 # System monitor
+~/gnomeshell-extension-manage --install --extension-id 495 # Top Icons
+cat ./gnome/extensions | xargs gsettings set org.gnome.shell enabled-extensions
+rm ~/gnomeshell-extension-manage
 
 #Default text editor to Sublime
 sudo sed -i 's/gedit/sublime_text/' /usr/share/applications/defaults.list
