@@ -6,3 +6,4 @@ org.gnome.desktop.peripherals.mouse speed -0.35
 org.gnome.desktop.peripherals.touchpad scroll-method 'two-finger-scrolling'
 org.gnome.desktop.peripherals.touchpad natural-scroll true
 org.gnome.desktop.peripherals.touchpad tap-to-click true
+org.gnome.nautilus.preferences enable-interactive-search false
