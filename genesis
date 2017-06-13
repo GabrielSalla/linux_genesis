@@ -86,6 +86,7 @@ sudo pip3 install ~/repositories/opsutils
 # Copying files
 cp $GENESISPATH/scripts ~/scripts -r
 cp $GENESISPATH/templates/vimrc ~/.vimrc
+sudo cp $GENESISPATH/templates/agnoster_custom.zsh-theme ~/.oh-my-zsh/
 cp $GENESISPATH/templates/zshrc ~/.zshrc
 cp $GENESISPATH/templates/gitconfig ~/.gitconfig
 cp $GENESISPATH/templates/gtk_css ~/.config/gtk-3.0/gtk.css
