@@ -7,3 +7,4 @@ org.gnome.desktop.peripherals.touchpad scroll-method 'two-finger-scrolling'
 org.gnome.desktop.peripherals.touchpad natural-scroll true
 org.gnome.desktop.peripherals.touchpad tap-to-click true
 org.gnome.nautilus.preferences enable-interactive-search false
+org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
