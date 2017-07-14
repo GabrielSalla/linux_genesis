@@ -12,6 +12,7 @@
 		"Python PEP8 Autoformat",
 		"SublimeLinter",
 		"SublimeLinter-pep8",
-		"PostgreSQL Syntax Highlighting"
+		"PostgreSQL Syntax Highlighting",
+		"TrailingSpaces"
 	]
 }
