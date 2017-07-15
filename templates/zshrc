@@ -6,7 +6,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-prompt_context () { } 
+prompt_context () { }
 
 alias p3="python3"
 alias gopen="xdg-open"
@@ -16,8 +16,9 @@ alias pgadmin="source ~/pgadmin4/bin/activate && python ~/pgadmin4/lib/python2.7
 alias vpn="sudo openvpn --config ~/.ovpn/config.ovpn --ca ~/.ovpn/ca.crt --cert ~/.ovpn/client.crt --key ~/.ovpn/client.key"
 
 # Database
-alias connect172="pgcli -h 172.31.19.134 -p 5432 -U ops -W -d pagarme"
-alias connectfinops="pgcli -h finops-intdb.pagarme.net -p 5432 -U ops -W -d pagarme"
+alias dbreplica="pgcli -h replica-db.pagarme.net -p 5432 -U ops -W -d pagarme"
+alias dbfinops="pgcli -h finops-intdb.pagarme.net -p 5432 -U ops -W -d pagarme"
+alias dbredshift="pgcli -h dataops-db.pagarme.net -p 5439 -U pagarme_readonly -W -d pagarme"
 
 # Scripts
 alias devbox="~/scripts/devbox"
