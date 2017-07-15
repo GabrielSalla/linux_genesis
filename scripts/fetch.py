@@ -4,25 +4,40 @@ from psycopg2 import ProgrammingError
 from tabulate import tabulate
 import time
 import sys
+import os
+
+output_file_name = os.path.join("/tmp", "subl_result")
+
 
 def connect(database_key):
     access_information = opsutils.load_access_information(look_at="home")
-    if(database_key == "172"):
-        print("Connecting to database 172")
-        return opsutils.DatabaseHandler(access_information["database_172"])
+    if(database_key == "replica"):
+        print("Connecting to database replica")
+        return opsutils.DatabaseHandler(
+            access_information["database_replica"])
     elif(database_key == "finops"):
         print("Connecting to database finops")
-        return opsutils.DatabaseHandler(access_information["database_finops_ops"])
+        return opsutils.DatabaseHandler(
+            access_information["database_finops_ops"])
+    elif(database_key == "redshift"):
+        print("Connecting to database redshift")
+        return opsutils.DatabaseHandler(
+            access_information["database_redshift"])
+
 
 def load_file(file):
     with open(file, "r") as input_file:
         return input_file.read()
 
+
 def get_clipboard():
     root = tkinter.Tk()
     return root.clipboard_get()
 
+
 def execute(database_handler, query):
+    set_time_zone = "set time zone 'america/sao_paulo'"
+    database_handler.execute(set_time_zone)
     try:
         return database_handler.fetch(query)
     except ProgrammingError as pgerror:
@@ -32,19 +47,28 @@ def execute(database_handler, query):
         print(pgerror.pgerror)
         exit(1)
 
+
+def save_result(result):
+    with open(output_file_name, "w") as output_file:
+        output_file.write(str(result))
+
+
 def show(result):
     try:
         headers = [key for key in result[0]]
         data = [[row[key] for key in headers] for row in result]
-        print(tabulate(data, headers=headers))
+        table_str = tabulate(data, headers=headers)
+        save_result(table_str)
+        os.system("subl %s" % output_file_name)
     except IndexError:
         print("Empty result")
+
 
 def main():
     if(len(sys.argv) < 2):
         sys.exit("Missing database parameter")
     database_key = sys.argv[1]
-    if(database_key not in ["172", "finops"]):
+    if(database_key not in ["replica", "finops", "redshift"]):
         sys.exit("Invalid database %s" % database_key)
 
     if(len(sys.argv) < 3):
@@ -53,6 +77,7 @@ def main():
         option = sys.argv[2]
 
     database_handler = connect(database_key)
+    database_handler.set_socket_timeout(5)
 
     if(option == "clipboard"):
         query = get_clipboard()
