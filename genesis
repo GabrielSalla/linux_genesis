@@ -72,11 +72,6 @@ cp $SUBLIMEPATH/packages ~/.config/sublime-text-3/Packages/User/Package\ Control
 # Sublime text 3 - Settings
 cp $SUBLIMEPATH/settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 
-# PgAdmin 4
-wget https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v1.5/pip/pgadmin4-1.5-py2.py3-none-any.whl -O pgadmin4-1.5-py2.py3-none-any.whl
-pip3 install pgadmin4-1.5-py2.py3-none-any.whl
-rm pgadmin4-1.5-py2.py3-none-any.whl
-
 # Cloning repositories
 mkdir ~/repositories
 git clone git@github.com:pagarme/ops.git ~/repositories/ops
