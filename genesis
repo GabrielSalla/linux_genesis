@@ -49,6 +49,8 @@ mkdir ~/.fonts
 mv ~/fonts/Inconsolata-g/Inconsolata-g\ for\ Powerline.otf ~/.fonts/
 rm -rf ~/fonts
 fc-cache -vf ~/.fonts
+git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting
+sudo mv ~/zsh-syntax-highlighting ~/.oh-my-zsh
 
 # Postman
 wget https://dl.pstmn.io/download/latest/linux64 -O ./postman.tar.gz
