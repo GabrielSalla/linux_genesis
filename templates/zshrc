@@ -27,3 +27,4 @@ alias fetch="python3 ~/scripts/fetch.py"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
