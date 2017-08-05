@@ -1,1 +1,2 @@
-0 11 * * 1-5 python3 ~/scripts/d0check.py
+1 11 * * 1-5 python3 ~/scripts/d0check.py
+*/10 * * * * python3 ~/scripts/keepsession.py
