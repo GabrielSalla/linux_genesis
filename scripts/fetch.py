@@ -14,7 +14,7 @@ def connect(database_key):
     if(database_key == "replica"):
         print("Connecting to database replica")
         return opsutils.DatabaseHandler(
-            access_information["database_replica"])
+            access_information["database_replica_ops"])
     elif(database_key == "finops"):
         print("Connecting to database finops")
         return opsutils.DatabaseHandler(
@@ -22,7 +22,7 @@ def connect(database_key):
     elif(database_key == "redshift"):
         print("Connecting to database redshift")
         return opsutils.DatabaseHandler(
-            access_information["database_redshift"])
+            access_information["database_redshift_ops"])
 
 
 def load_file(file):
