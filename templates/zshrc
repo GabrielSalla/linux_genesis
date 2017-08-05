@@ -18,10 +18,10 @@ alias vpn="sudo openvpn --config ~/.ovpn/config.ovpn --ca ~/.ovpn/ca.crt --cert 
 # Database
 alias dbreplica="pgcli -h replica-db.pagarme.net -p 5432 -U ops -W -d pagarme"
 alias dbfinops="pgcli -h finops-intdb.pagarme.net -p 5432 -U ops -W -d pagarme"
-alias dbredshift="pgcli -h dataops-db.pagarme.net -p 5439 -U pagarme_readonly -W -d pagarme"
+alias dbredshift="pgcli -h dataops-db.pagarme.net -p 5439 -U pagarme_ops -W -d pagarme"
 
 # Scripts
-alias devbox="~/scripts/devbox"
+alias opsbox="~/scripts/opsbox"
 alias fetch="python3 ~/scripts/fetch.py"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
