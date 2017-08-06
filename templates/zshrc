@@ -24,6 +24,17 @@ alias dbredshift="pgcli -h dataops-db.pagarme.net -p 5439 -U pagarme_ops -W -d p
 alias opsbox="~/scripts/opsbox"
 alias fetch="python3 ~/scripts/fetch.py"
 
+# Given a process name, start 'top' with the running process
+ntop(){
+    if [ $# -eq 0 ]
+      then
+        echo "No process name supplied"
+    else
+        pids=$(pgrep -d',' "$1")
+        [[ -z "$pids" ]] && echo "No process named $1 in execution" || top -p $pids
+    fi
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
