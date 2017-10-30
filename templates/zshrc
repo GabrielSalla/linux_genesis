@@ -12,17 +12,19 @@ alias p3="python3"
 alias gopen="xdg-open"
 
 alias postman="~/Postman/Postman"
-alias pgadmin="source ~/pgadmin4/bin/activate && python ~/pgadmin4/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py" 
+alias pgadmin="source ~/pgadmin4/bin/activate && python ~/pgadmin4/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py"
 alias vpn="sudo openvpn --config ~/.ovpn/config.ovpn --ca ~/.ovpn/ca.crt --cert ~/.ovpn/client.crt --key ~/.ovpn/client.key"
 
 # Database
 alias dbreplica="pgcli -h replica-db.pagarme.net -p 5432 -U ops -W -d pagarme"
 alias dbfinops="pgcli -h finops-intdb.pagarme.net -p 5432 -U ops -W -d pagarme"
 alias dbredshift="pgcli -h dataops-db.pagarme.net -p 5439 -U pagarme_ops -W -d pagarme"
+alias dblocal="pgcli -h localhost -p 5432 -U postgres -W -d postgres"
 
 # Scripts
 alias opsbox="~/scripts/opsbox"
 alias fetch="python3 ~/scripts/fetch.py"
+alias session="python3 ~/scripts/getsession.py"
 
 # Given a process name, start 'top' with the running process
 ntop(){
@@ -35,7 +37,25 @@ ntop(){
     fi
 }
 
+# Start a local venv if exists, or use the one in the home
+venv(){
+    if [ $# -eq 0 ]
+        then
+            VENV_NAME='ve'
+        else
+            VENV_NAME=$1
+    fi
+    if [[ -d ./$VENV_NAME ]]; then
+        echo 'Starting local virtual environment'
+        source ./$VENV_NAME/bin/activate
+    else
+        echo 'Starting home virtual environment'
+        source $HOME/ve/bin/activate
+    fi
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+venv
