@@ -75,6 +75,8 @@ wget https://packagecontrol.io/Package%20Control.sublime-package -O ~/.config/su
 cp $SUBLIMEPATH/packages ~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
 # Sublime text 3 - Settings
 cp $SUBLIMEPATH/settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
+# Sublime text 3 - Keymap
+cp $SUBLIMEPATH/keymap ~/.config/sublime-text-3/Packages/User/Default\ \(Linux\).sublime-keymap
 
 # Cloning repositories
 mkdir ~/repositories
