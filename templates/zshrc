@@ -8,12 +8,17 @@ source $ZSH/oh-my-zsh.sh
 
 prompt_context () { }
 
+# Fast folders
+alias watchdog="cd ~/repositories/watchdog"
+alias ops="cd ~/repositories/ops"
+alias opsutils="cd ~/repositories/opsutils"
+
 alias p3="python3"
 alias gopen="xdg-open"
 
 alias postman="~/Postman/Postman"
 alias pgadmin="source ~/pgadmin4/bin/activate && python ~/pgadmin4/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py"
-alias vpn="sudo openvpn --config ~/.ovpn/config.ovpn --ca ~/.ovpn/ca.crt --cert ~/.ovpn/client.crt --key ~/.ovpn/client.key"
+alias vpn="sudo openvpn --config ~/.cert/config.ovpn --ca ~/.cert/ca.crt --cert ~/.cert/client.crt --key ~/.cert/client.key"
 
 # Database
 alias dbreplica="pgcli -h replica-db.pagarme.net -p 5432 -U ops -W -d pagarme"
