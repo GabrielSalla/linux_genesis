@@ -13,7 +13,8 @@
     helper = cache --timeout=7200
 [alias]
     blog = log --graph --all --decorate --oneline
-    amend = commit --amend
+    amend = commit --amend --no-edit
     rbm = rebase -i master
 [core]
     autocrlf = input
+    editor = nvim
