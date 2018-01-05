@@ -1,11 +1,11 @@
 export ZSH=$HOME/.oh-my-zsh
+export EDITOR=nvim
 
-ZSH_THEME="agnoster_custom"
+ZSH_THEME="kphoen_custom"
 
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-
 prompt_context () { }
 
 # Fast folders
@@ -14,22 +14,22 @@ alias ops="cd ~/repositories/ops"
 alias opsutils="cd ~/repositories/opsutils"
 
 alias p3="python3"
-alias gopen="xdg-open"
-
 alias postman="~/Postman/Postman"
-alias pgadmin="source ~/pgadmin4/bin/activate && python ~/pgadmin4/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py"
-alias vpn="sudo openvpn --config ~/.cert/config.ovpn --ca ~/.cert/ca.crt --cert ~/.cert/client.crt --key ~/.cert/client.key"
-
-# Database
-alias dbreplica="pgcli -h replica-db.pagarme.net -p 5432 -U ops -W -d pagarme"
-alias dbfinops="pgcli -h finops-intdb.pagarme.net -p 5432 -U ops -W -d pagarme"
-alias dbredshift="pgcli -h dataops-db.pagarme.net -p 5439 -U pagarme_ops -W -d pagarme"
-alias dblocal="pgcli -h localhost -p 5432 -U postgres -W -d postgres"
 
 # Scripts
 alias opsbox="~/scripts/opsbox"
-alias fetch="python3 ~/scripts/fetch.py"
 alias session="python3 ~/scripts/getsession.py"
+
+# Database
+db(){
+    if [ $# -eq 0 ]
+        then
+            echo "Missing database reference"
+        else
+            echo "Connecting to $1"
+            pgcli -D $1
+    fi
+}
 
 # Given a process name, start 'top' with the running process
 ntop(){
