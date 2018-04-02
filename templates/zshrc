@@ -15,6 +15,7 @@ alias opsutils="cd ~/repositories/opsutils"
 
 alias p3="python3"
 alias postman="~/Postman/Postman"
+alias jp="nohup jupyter notebook ~/notebooks &"
 
 # Scripts
 alias opsbox="~/scripts/opsbox"
