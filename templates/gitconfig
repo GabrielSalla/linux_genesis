@@ -14,7 +14,8 @@
 [alias]
     blog = log --graph --all --decorate --oneline
     amend = commit --amend --no-edit
-    rbm = rebase -i master
+    rbm = rebase -i --autostash master
+    pfwl = push --force-with-lease
 [core]
     autocrlf = input
     editor = nvim
