@@ -10,9 +10,10 @@
 		"Pretty JSON",
 		"Python Completions",
 		"Python PEP8 Autoformat",
-		"SublimeLinter",
-		"SublimeLinter-pep8",
 		"PostgreSQL Syntax Highlighting",
-		"TrailingSpaces"
+		"SublimeLinter",
+		"SublimeLinter-pycodestyle",
+		"TrailingSpaces",
+		"Echo Evaluator"
 	]
 }
