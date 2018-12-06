@@ -19,7 +19,8 @@ alias jp="nohup jupyter notebook ~/notebooks &"
 
 # Scripts
 alias session="python3 ~/scripts/getsession.py"
-alias qcsv="python3 ~/temp/query_to_csv.py"
+alias qcsv="python3 ~/scripts/query_to_csv.py"
+alias slack_send_file="python3 ~/scripts/slack_send_file.py"
 
 alias sizescan="du -sc ./* | sort -nr"
 
