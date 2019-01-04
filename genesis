@@ -1,6 +1,10 @@
 #!/bin/bash
 GENESISPATH="$(find . -maxdepth 1 -type d -name '*genesis*' -print -quit)"
 
+# Adding repositories
+sudo rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+sudo dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+
 # Installing pagages
 sudo dnf update
 sudo dnf install -fy $(grep -vE "^\s*#" $GENESISPATH/packages  | tr "\n" " ")
@@ -66,11 +70,6 @@ rm postman.tar.gz
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.2-amd64.deb -O slack.deb
 sudo dpkg -i slack.deb
 rm slack.deb
-
-# Sublime text 3
-wget https://download.sublimetext.com/sublime-text_build-3126_amd64.deb -O sublime.deb
-sudo dpkg -i sublime.deb
-rm sublime.deb
 
 SUBLIMEPATH=$GENESISPATH/sublime
 # Sublime text 3 - Packages
