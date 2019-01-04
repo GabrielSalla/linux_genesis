@@ -67,9 +67,9 @@ sudo tar -xzf postman.tar.gz -C ~
 rm postman.tar.gz
 
 # Slack
-wget https://downloads.slack-edge.com/linux_releases/slack-desktop-2.6.2-amd64.deb -O slack.deb
-sudo dpkg -i slack.deb
-rm slack.deb
+wget https://downloads.slack-edge.com/linux_releases/slack-3.3.3-0.1.fc21.x86_64.rpm -O slack.rpm
+sudo rpm -i slack.rpm
+rm slack.rpm
 
 SUBLIMEPATH=$GENESISPATH/sublime
 # Sublime text 3 - Packages
