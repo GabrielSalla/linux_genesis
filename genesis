@@ -14,18 +14,24 @@ sudo pip install -r $GENESISPATH/python/python_requirements
 sudo pip3 install -r $GENESISPATH/python/python3_requirements
 
 # Setup SSH-key
-ssh-keygen -t rsa -b 4096 -C "gabriel.c.salla@gmail.com" -f ~/.ssh/id_rsa
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-cat ~/.ssh/id_rsa.pub
-printf '%*s\n\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+echo 'Email for SSH key or leave it blank to skip: '
+read ssh_email
+echo
+if [[ ! -z "$ssh_email" ]]
+then
+  ssh-keygen -t rsa -b 4096 -C $ssh_email -f ~/.ssh/id_rsa
+  eval "$(ssh-agent -s)"
+  echo '\nConfirming SSH key password'
+  ssh-add ~/.ssh/id_rsa
+  echo '\nYour public key is:'
+  cat ~/.ssh/id_rsa.pub
+fi
 
 # GitHub
 while true
 do
   echo "Add key to GitHub and press a key to continue"
-  read -n 1 -s
+  read -n 1
   echo "Testing GitHub key"
   ssh -T git@github.com >/dev/null 2>/dev/null
   RESULT=$?
