@@ -1,0 +1,53 @@
+pg_running_queries = '''
+select
+  pid,
+  current_timestamp - query_start as age,
+  usename,
+  application_name,
+  client_addr,
+  state,
+  query
+from pg_stat_activity
+where
+  usename not in ('pagarme', 'rdsadmin', 'dms') and
+  state != 'idle' and
+  current_timestamp - query_start > interval '$1 minutes'
+order by age desc;
+'''
+pg_terminate_delay = '''
+select
+  pid,
+  current_timestamp - query_start as age,
+  usename,
+  application_name,
+  client_addr,
+  query,
+  state,
+  pg_terminate_backend(pid)
+from pg_stat_activity
+where
+  usename not in ('pagarme', 'rdsadmin', 'dms') and
+  state not in ('idle', 'idle in transaction') and
+  current_timestamp - query_start > interval '$1 minutes'
+order by age desc;
+'''
+pg_terminate = '''
+select
+  pid,
+  current_timestamp - query_start as age,
+  usename,
+  application_name,
+  client_addr,
+  query,
+  state,
+  pg_terminate_backend(pid)
+from pg_stat_activity
+where
+  usename not in ('pagarme', 'rdsadmin') and
+  state != 'idle' and
+  $1
+order by age desc;
+'''
+terminate = '''
+select pg_terminate_backend($1)
+'''

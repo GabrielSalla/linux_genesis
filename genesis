@@ -113,3 +113,6 @@ rm ~/gnomeshell-extension-manage
 # Default text editor to Sublime
 sudo sed -i 's/gedit/sublime_text/' /usr/share/applications/defaults.list
 cp /usr/share/applications/defaults.list ~/.local/share/applications/defaults.list
+
+# pgcli configurations
+sh $GENESISPATH/scripts/pgcli_config.sh
